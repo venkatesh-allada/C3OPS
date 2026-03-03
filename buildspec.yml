@@ -34,3 +34,4 @@ artifacts:
   base-directory: target
   files:
     - target/*.war
+    - target/*.jar
