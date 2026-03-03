@@ -30,8 +30,17 @@ phases:
       #   -u admin:admin123 \
       #   -T $WAR_FILE \
       #   "http://40.192.110.39:8080/manager/text/deploy?path=/eg&update=true"
+      - ls -l target
+
+
+#artifacts:
+ # base-directory: target
+  #files:
+   # - target/*.war
+    #- target/*.jar
+
 artifacts:
   base-directory: target
   files:
-    - target/*.war
-    - target/*.jar
+    - "*.jar"
+    - "*.war"
