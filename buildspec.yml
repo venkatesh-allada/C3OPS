@@ -35,7 +35,7 @@ phases:
     commands:
       - echo "Post-build phase started at $(date)"
       # WARNING: This will automatically change your AWS infrastructure on every git push...
-      - terraform destroy --auto-approve 
+      #- terraform apply --auto-approve tfplan
       - echo "Build completed at $(date)"
 
 ## updated

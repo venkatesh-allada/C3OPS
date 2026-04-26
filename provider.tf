@@ -1,8 +1,8 @@
 terraform {
   required_version = ">= 1.9.5"
 
-  # ADD THIS SECTION BELOW
   backend "s3" {
+    # This block must remain hardcoded or use a partial configuration file
     bucket         = "c3ops-terraform-state-809704584374"
     key            = "preprod/core-infra/terraform.tfstate"
     region         = "ap-south-2"
@@ -19,13 +19,14 @@ terraform {
 }
 
 provider "aws" {
-  region              = "ap-south-2"
-  allowed_account_ids = ["809704584374"]
-  
+  region              = var.aws_region
+  allowed_account_ids = [var.allowed_account_id]
+
+  # These tags will be applied to EVERY resource created in this project automatically
   default_tags {
     tags = {
-      Project     = "c3ops_preprod"
-      Environment = "PreProd"
+      Project     = var.project_name
+      Environment = var.environment
       ManagedBy   = "Terraform"
     }
   }
