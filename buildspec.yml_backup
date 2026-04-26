@@ -34,11 +34,10 @@ phases:
   post_build:
     commands:
       - echo "Post-build phase started at $(date)"
-      # WARNING: This will automatically change your AWS infrastructure on every git push...
+      # WARNING: This will automatically change your AWS infrastructure on every git push.
       - terraform apply --auto-approve tfplan
       - echo "Build completed at $(date)"
 
-## Mama check here
 
 # Artifacts to save from the build (useful for debugging or manual promotion)
 artifacts:
