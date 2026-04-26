@@ -38,7 +38,7 @@ phases:
       - terraform apply --auto-approve tfplan
       - echo "Build completed at $(date)"
 
-## Mama check here
+## updated
 
 # Artifacts to save from the build (useful for debugging or manual promotion)
 artifacts:
