@@ -8,9 +8,6 @@
 # Crash logs
 crash.log
 
-# Variables files (if they contain secrets)
-*.tfvars
-*.tfvars.json
 
 # Binary files
 *.exe
