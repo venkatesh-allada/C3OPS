@@ -1,0 +1,16 @@
+# Local terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Variables files (if they contain secrets)
+*.tfvars
+*.tfvars.json
+
+# Binary files
+*.exe

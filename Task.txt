@@ -1,0 +1,17 @@
+I want to  build core-infra in aws cloud --Give me PROD READY TERRAFORM CODE
+AWS Account: 809704584374
+Region: ap-south-2
+core-infra name: c3ops_preprod
+Below are the core infra details:
+Core-infra
+VPC
+2 Public Subnets
+2 Private Subnets Web
+2 Private Subnets App
+2 Private Subnets DB
+IGW
+NAT Gateway
+Route Tables
+NACL
+Security Groups
+Technology: Terraform v1.9.5

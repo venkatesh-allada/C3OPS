@@ -1,0 +1,46 @@
+version: 0.2
+
+# AWS CodeBuild Configuration for C3OPS Core Infrastructure
+# Optimized for Root Directory Execution
+
+phases:
+  install:
+    commands:
+      - echo "Installing Terraform..."
+      - wget -q https://releases.hashicorp.com/terraform/1.9.5/terraform_1.9.5_linux_amd64.zip
+      - unzip terraform_1.9.5_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+      - terraform version
+      - echo "AWS CLI is pre-installed on most CodeBuild images, checking version..."
+      - aws --version
+
+  pre_build:
+    commands:
+      - echo "Pre-build phase started at $(date)"
+      - aws sts get-caller-identity
+      - echo "Initializing Terraform..."
+      - terraform init
+      - echo "Validating Terraform configuration..."
+      - terraform validate
+
+  build:
+    commands:
+      - echo "Build phase started at $(date)"
+      - echo "Planning infrastructure deployment..."
+      # Generates a speculative plan and saves it to a file
+      - terraform plan -out=tfplan
+      - echo "Infrastructure plan saved to tfplan"
+
+  post_build:
+    commands:
+      - echo "Post-build phase started at $(date)"
+      # WARNING: This will automatically change your AWS infrastructure on every git push.
+      - terraform apply --auto-approve tfplan
+      - echo "Build completed at $(date)"
+
+# Artifacts to save from the build (useful for debugging or manual promotion)
+artifacts:
+  files:
+    - tfplan
+    - .terraform.lock.hcl
+  name: TerraformArtifacts-$(date +%Y-%m-%d)
