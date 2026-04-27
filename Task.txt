@@ -16,5 +16,5 @@ NACL
 Security Groups
 Technology: Terraform v1.9.5
 
-cmd : - terraform destroy --auto-approve tfplan
-- terraform apply --auto-approve tfplan
+cmd : - terraform plan -destroy -out=destroyplan
+      - terraform apply "tfplan"

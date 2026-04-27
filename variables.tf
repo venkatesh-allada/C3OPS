@@ -27,3 +27,21 @@ variable "allowed_account_id" {
   description = "The AWS Account ID to prevent deployment to the wrong account"
   type        = string
 }
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "db_username" {
+  description = "Database administrator username"
+  type        = string
+  sensitive   = true
+}
+
+variable "db_password" {
+  description = "Database administrator password"
+  type        = string
+  sensitive   = true
+}
